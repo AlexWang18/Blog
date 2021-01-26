@@ -5,4 +5,4 @@ const typography = new TypoGraphy(fairyGateTheme)
 
 export const { scale, rhytm, options } = typography
 
-export default typography
+export default typography;
