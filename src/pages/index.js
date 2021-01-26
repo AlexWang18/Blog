@@ -18,6 +18,8 @@ const Home = props => {
         <Link to = "/about/">About</Link>
         <hr></hr>
         <Link to = "/contact/">Contact</Link>
+        <hr></hr>
+        <Link to = "/my-files">Files</Link>
       </div>
     </Layout>
   )

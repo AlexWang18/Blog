@@ -1,25 +1,28 @@
 import React from "react"
-import { css } from "@emotion/react"
-import { Link } from "gatsby"
+//import { css } from "@emotion/react"
+import { Link, graphql, useStaticQuery } from "gatsby"
 //import { rhythm } from "../utils/typography"
 
-export default function layout({ children }) {
+export default function Layout({ children }) {
+  const data = useStaticQuery(
+    // similar to hooks? nvm non page comps can use static query prolly bc they arent rendered
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   return (
-    <div
-         style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}
-    >
+    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
       <Link to={`/`}>
-        {/* <h3 
-          css={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline-block;
-            font-style: normal;
-          `}
-        >
-          Home
-        </h3> */}
+        <h3>Home</h3>
       </Link>
-      <h2 style={{ "text-align": "left", color: "eee" }}>Shared Title</h2>
+      <h2 style={{ textAlign: "left", color: "eee" }}>{data.site.siteMetadata.title}</h2>
       {children}
     </div>
   )

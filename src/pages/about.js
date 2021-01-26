@@ -1,7 +1,7 @@
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
-import {graphql} from 'gatsby'
+
 
 export default function About({data}) {
   return (
