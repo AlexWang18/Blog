@@ -34,7 +34,7 @@ const Home = props => {
 }
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order:DESC}) {
       totalCount
       edges {
         node {
@@ -48,6 +48,12 @@ export const query = graphql`
       }
     }
   }
-`
+`/*.then(res=>{
+  if(res.errors) throw res.errors
+  return res.data.allMarkdownRemark.edges.filter(item =>{
+    return item.node.id !== -1
+  })
+}) */
+
 
 export default Home
