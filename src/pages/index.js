@@ -13,13 +13,17 @@ const Home = props => {
       </div>
       <div>
         <p>This is my dummy Blog site</p>
-        <h4>{props.data.allMarkdownRemark.totalCount}Posts</h4>
+        <h4>{props.data.allMarkdownRemark.totalCount} Total Posts</h4>
         <ul>
           {props.data.allMarkdownRemark.edges.map(({ node }) => (
             <div key={node.id}>
-              <h3>
-                {node.frontmatter.title} <span>-- {node.frontmatter.date}</span>
-              </h3>
+              <Link to={node.fields.slug}>
+                <h3>
+                  {node.frontmatter.title}{" "}
+                  <span>-- {node.frontmatter.date}</span>
+                </h3>
+                <p>Click for full story</p>
+              </Link>
             </div>
           ))}
         </ul>
@@ -34,7 +38,7 @@ const Home = props => {
 }
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order:DESC}) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
@@ -43,17 +47,19 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
           }
+          fields {
+            slug
+          }
           excerpt
         }
       }
     }
   }
-`/*.then(res=>{
+` /*.then(res=>{
   if(res.errors) throw res.errors
   return res.data.allMarkdownRemark.edges.filter(item =>{
     return item.node.id !== -1
   })
 }) */
-
 
 export default Home
