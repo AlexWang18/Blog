@@ -6,7 +6,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 export default function Layout({ children }) {
   
   /*const data = useStaticQuery(
-    // similar to hooks? 
+    // similar to hooks? was getting error
     graphql`
       query {
         site {

@@ -12,8 +12,8 @@ const Home = props => {
         <img src="https://source.unsplash.com/random/400x200" alt="" />
       </div>
       <div>
-        <p>This is my dummy Blog site</p>
-        <h4>{props.data.allMarkdownRemark.totalCount} Total Posts</h4>
+
+        <h3>{props.data.allMarkdownRemark.totalCount} Total Posts</h3>
         <ul>
           {props.data.allMarkdownRemark.edges.map(({ node }) => (
             <div key={node.id}>
@@ -47,7 +47,7 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
           }
-          fields {
+          fields { 
             slug
           }
           excerpt
